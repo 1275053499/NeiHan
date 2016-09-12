@@ -237,5 +237,4 @@ typedef NS_ENUM(NSInteger, NHBaseTableViewRowAnimation) {
 - 下一阶段的方向大概是swift项目了，现在在着手一个swift小项目，前段时间写的，大概75%完成度了，也会在未来开源出来
 - 最后，希望大家能够提出良好的建议和见解，如果想交朋友的可以加我qq3297391688，共同进步，成为一名真正的‘老司机’
 
-附： 
-####[高仿内涵段子Github地址：https://github.com/Charlesyaoxin/NeiHanDuanZI](https://github.com/Charlesyaoxin/NeiHanDuanZI)
+ 想了解更多请移步至简书地址《简书地址》：http://www.jianshu.com/users/3930920b505b/latest_articles
