@@ -1,8 +1,173 @@
-想了解更多请移步至简书地址《简书地址》：http://www.jianshu.com/users/3930920b505b/latest_articles
+想了解更多请移步至简书地址《简书地址》：http://www.jianshu.com/users/3930920b505b/latest_articles 
 
-花了两周闲余时间模仿了一下今日头条旗下的iOS端app内涵段子，相信大家对于这个app并不陌生，如果喜欢的话请给个star，也希望大家能够积极提出建议和见解，共同进步。（8.30-9.11）
+    
+    介绍：
+    花了两周闲余时间模仿了一下今日头条旗下的iOS端app内涵段子，如果喜欢的话请给个star。(8.30-9.11)
+    这个项目是用OC编写，如果有的朋友已经下载下来看见了这个项目，就会意识到这个项目没有一个storyboard或者是nib，不是因为不喜欢用storyboard或者nib，而是因为一直以来就想用纯代码写个项目，但是项目是写出来的，光想不做不写是不行的，所以我就开始我的”内涵之旅“了。
+日志:
+8.30号：没怎么做东西，就是搭建了项目的架构，拉入了之前经常用的一些工具类，宏定义等等。
+8.30主要事项：UITabbarController+UINavigationController项目架构组建。
+部分代码
+```
+// 添加子控制器
+- (void)addChildViewControllerWithClassname:(NSString *)classname
+                                  imagename:(NSString *)imagename
+                                      title:(NSString *)title {
+    
+    UIViewController *vc = [[NSClassFromString(classname) alloc] init];
+    NHBaseNavigationViewController *nav = [[NHBaseNavigationViewController alloc] initWithRootViewController:vc];
+    nav.tabBarItem.title = title;
+    nav.tabBarItem.image = [UIImage imageNamed:imagename];
+    nav.tabBarItem.selectedImage = [[UIImage imageNamed:[imagename stringByAppendingString:@"_press"]] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
+    [self addChildViewController:nav];
+}
+``` 
+8.31号：开始在8.30建的类上面填充内容，首页，这个最复杂的界面。
+搭建类似于今日头条首页的架构。开始抓接口，添加接口的公共参数，完善请求基类。还有几个展示的列表页的编写，由简单入难，有助于在开发中培养自信心。
+``` 
+/** 链接*/
+@property (nonatomic, copy) NSString *nh_url;
+/** 默认GET*/
+@property (nonatomic, assign) BOOL nh_isPost;
+/** 图片数组*/
+@property (nonatomic, strong) NSArray <UIImage *>*nh_imageArray;
+
+/** 构造方法*/
++ (instancetype)nh_request;
++ (instancetype)nh_requestWithUrl:(NSString *)nh_url;
++ (instancetype)nh_requestWithUrl:(NSString *)nh_url isPost:(BOOL)nh_isPost;
++ (instancetype)nh_requestWithUrl:(NSString *)nh_url isPost:(BOOL)nh_isPost delegate:(id <NHBaseRequestReponseDelegate>)nh_delegate;
+
+/** 开始请求，如果设置了代理，不需要block回调*/
+- (void)nh_sendRequest;
+/** 开始请求，没有设置代理，或者设置了代理，需要block回调，block回调优先级高于代理*/
+- (void)nh_sendRequestWithCompletion:(NHAPIDicCompletion)completion;
+```
+
+9.1号， 控制器和cell以及普通文本图片数据的展示，以及发布界面的视图封装。
+9.2 - 9.4 首页的回调处理以及发现界面
+``` 
+typedef NS_ENUM(NSUInteger, NHHomeTableViewCellItemType) {
+    /** 点赞*/
+    NHHomeTableViewCellItemTypeLike = 1,
+    /** 踩*/
+    NHHomeTableViewCellItemTypeDontLike,
+    /** 评论*/
+    NHHomeTableViewCellItemTypeComment,
+    /** 分享*/
+    NHHomeTableViewCellItemTypeShare
+}; 
+@class NHHomeTableViewCellFrame , NHHomeTableViewCell, NHDiscoverSearchCommonCellFrame, NHNeiHanUserInfoModel;
+@protocol NHHomeTableViewCellDelegate <NSObject>
+
+/** 点击浏览大图*/
+- (void)homeTableViewCell:(NHHomeTableViewCell *)cell didClickImageView:(UIImageView *)imageView currentIndex:(NSInteger)currentIndex urls:(NSArray <NSURL *>*)urls;
+/** 播放视频*/
+- (void)homeTableViewCell:(NHHomeTableViewCell *)cell didClickVideoWithVideoUrl:(NSString *)videoUrl videoCover:(NHBaseImageView *)baseImageView;
+/** 分类*/
+- (void)homeTableViewCellDidClickCategory:(NHHomeTableViewCell *)cell;
+/** 个人中心*/
+- (void)homeTableViewCell:(NHHomeTableViewCell *)cell gotoPersonalCenterWithUserInfo:(NHNeiHanUserInfoModel *)userInfoModel;
+/** 点击底部item*/
+- (void)homeTableViewCell:(NHHomeTableViewCell *)cell didClickItemWithType:(NHHomeTableViewCellItemType)itemType;
+
+@optional
+/** 点击关注*/
+- (void)homeTableViewCellDidClickAttention:(NHHomeTableViewCell *)cell;
+/** 删除*/
+- (void)homeTableViewCellDidClickClose:(NHHomeTableViewCell *)cell;
+@end
+@interface NHHomeTableViewCell : NHBaseTableViewCell
+
+/** 代理*/
+@property (nonatomic, weak) id <NHHomeTableViewCellDelegate> delegate;
+/** 首页cellFrame模型*/
+@property (nonatomic, strong) NHHomeTableViewCellFrame *cellFrame;
+/** 搜索cellFrame模型*/
+@property (nonatomic, strong) NHDiscoverSearchCommonCellFrame *searchCellFrame;
+/** 用来判断是否有删除按钮*/
+@property (nonatomic, assign) BOOL isFromHomeController;
+
+/** 判断是否在详情页*/
+- (void)setCellFrame:(NHHomeTableViewCellFrame *)cellFrame isDetail:(BOOL)isDetail;
+/** 设置关键字*/
+- (void)setSearchCellFrame:(NHDiscoverSearchCommonCellFrame *)searchCellFrame keyWord:(NSString *)keyWord;
+/** 点赞*/
+- (void)didDigg;
+/** 踩*/
+- (void)didBury;
+```
+9.5 - 9.7审核界面的逻辑处理和动画处理，以及发现界面的轮播图和自定义pageControl
+```
+- (void)setCurrentIndex:(NSInteger)currentIndex {
+    _currentIndex = currentIndex;
+    UIBezierPath *path = [UIBezierPath bezierPath];
+    // 设置选中layer的动画
+    
+    CGFloat delta = self.width -  self.numberOfItems * self.pageWidth + (self.numberOfItems - 1) * self.pageSpace - 15;
+    [path moveToPoint:CGPointMake(currentIndex  * self.pageWidth + currentIndex * self.pageSpace + delta, 5)];
+    [path addLineToPoint:CGPointMake((currentIndex + 1) * self.pageWidth + currentIndex * self.pageSpace + delta , 5)];
+    
+    // path(平移动画)
+    CGFloat duration = 1.0;
+    CABasicAnimation *animation = [CABasicAnimation animationWithKeyPath:@"path"];
+    animation.removedOnCompletion = NO;
+    animation.fillMode = kCAFillModeForwards;
+    animation.duration = duration;
+    animation.fromValue = (__bridge id _Nullable)(self.prePath.CGPath);
+    animation.toValue = (__bridge id _Nullable)(path.CGPath);
+    [self.selectedLayer addAnimation:animation forKey:@""];
+    
+    self.prePath = path;
+}
+
+- (void)setNumberOfItems:(NSInteger)numberOfItems {
+    _numberOfItems = numberOfItems;
+    if (self.pageWidth * numberOfItems + self.pageSpace * (numberOfItems - 1) > self.frame.size.width) {
+        self.pageWidth = (self.frame.size.width - self.pageSpace * (numberOfItems - 1)) / numberOfItems;
+    }
+    CGFloat originX = 0;
+    UIBezierPath *path = [UIBezierPath bezierPath];
+    
+    // 内容充不满，需要靠右边对齐
+    CGFloat delta = self.width -  numberOfItems * self.pageWidth + (numberOfItems - 1) * self.pageSpace - 15;
+    for (int i = 0; i < numberOfItems; i++) {
+        originX = i * self.pageSpace + self.pageWidth * i + delta;
+        [path moveToPoint:CGPointMake(originX, 5)];
+        [path addLineToPoint:CGPointMake(originX + self.pageWidth, 5)];
+        path.lineWidth = 5;
+        if (i == 0) {
+            self.prePath = path;
+            self.selectedLayer.path = self.prePath.CGPath;
+        }
+    }
+    self.showPageLayer.path = path.CGPath;
+}
+```
+9.8 - 9.9，搜索界面的逻辑处理
+个人中心内容的填充，部分公共空数据界面视图的处理
+9.10 视频的播放和一些地方的修修补补
+9.11部分动画效果的完善，例如点赞和踩，关注等。。以及简单的测试。9.11晚上编写博文上传Github。
+``` 
+@interface NHCustomCommonEmptyView : UIView
+@property (nonatomic, weak) UIImageView *topTipImageView;
+@property (nonatomic, weak) UILabel *firstL;
+@property (nonatomic, weak) UILabel *secondL;
+
+- (instancetype)initWithTitle:(NSString *)title
+                  secondTitle:(NSString *)secondTitle
+                     iconname:(NSString *)iconname;
+- (instancetype)initWithAttributedTitle:(NSMutableAttributedString *)attributedTitle
+                  secondAttributedTitle:(NSMutableAttributedString *)secondAttributedTitle
+                               iconname:(NSString *)iconname;
+- (void)showInView:(UIView *)view;
+
+@end
+```
+
 
 ##主要实现的功能如下：
+
 #### 首页 : 包括点赞、踩、分享、收藏，复制链接，视频的播放，上拉下拉，评论列表，关注列表
 #####首页
 ![精选首页.jpeg](http://upload-images.jianshu.io/upload_images/939127-943a3634a77afe9b.jpeg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
@@ -232,9 +397,15 @@ typedef NS_ENUM(NSInteger, NHBaseTableViewRowAnimation) {
 
 ####[简单易用的tableViewControllerGithub地址：https://github.com/Charlesyaoxin/CustomTableViewController](https://github.com/Charlesyaoxin/CustomTableViewController)
 ###分析和总结
-- 这个项目做得时间比较仓促，前后用了不到两周的时间。
-- 不知道仔细看的朋友有没有意识到，这是用纯代码写的，并不是自己不习惯用nib或者sb，是因为一直以来想用纯代码写一个项目。
-- 下一阶段的方向大概是swift项目了，现在在着手一个swift小项目，前段时间写的，大概75%完成度了，也会在未来开源出来
-- 最后，希望大家能够提出良好的建议和见解，如果想交朋友的可以加我qq3297391688，共同进步，成为一名真正的‘老司机’
+- #####这个项目做得时间比较仓促，前后用了不到两周的时间。
+- #####不知道仔细看的朋友有没有意识到，这是用纯代码写的，并不是自己不习惯用nib或者sb，是因为一直以来想用纯代码写一个项目。
+- ##### 所有的东西都是在公司的事情忙完的情况下编写的，最近公司不是特别忙，所以有时间写点自己的东西，当然下班回家晚上也花了不少时间用在了这个项目上面。
+-  #####项目中有些类和文件是之前自己整理的直接拖进去用，一定的意义上来说节省了时间。
+- ##### bug有很多，我也没怎么测直接就提交Github了，以后肯定会再更新这个项目吧，但是不一定，公司忙起来就没时间了。。
+-  #####下一阶段的方向大概是swift项目了，现在在着手一个swift小项目，前段时间写的，大概75%完成度了，也会在未来开源出来
+-  #####最后，希望大家能够提出良好的建议和见解，如果想交朋友的可以加我qq3297391688，共同进步，成为一名真正的‘老司机’
+- #####最后的最后，希望大家能喜欢给个star和关注，让我们一起进步。
 
+附： 
+####[高仿内涵段子Github地址：https://github.com/Charlesyaoxin/NeiHanDuanZI](https://github.com/Charlesyaoxin/NeiHanDuanZI)
  想了解更多请移步至简书地址《简书地址》：http://www.jianshu.com/users/3930920b505b/latest_articles
