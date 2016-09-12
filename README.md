@@ -1,10 +1,18 @@
-想了解更多请移步至简书地址《简书地址》：http://www.jianshu.com/users/3930920b505b/latest_articles 
+ 想了解更多请移步至简书地址《简书地址》：http://www.jianshu.com/users/3930920b505b/latest_articles
+###Github 地址 [https://github.com/Charlesyaoxin/NeiHanDuanZI](https://github.com/Charlesyaoxin/NeiHanDuanZI)
 
     
-    介绍：
-    花了两周闲余时间模仿了一下今日头条旗下的iOS端app内涵段子，如果喜欢的话请给个star。(8.30-9.11)
-    这个项目是用OC编写，如果有的朋友已经下载下来看见了这个项目，就会意识到这个项目没有一个storyboard或者是nib，不是因为不喜欢用storyboard或者nib，而是因为一直以来就想用纯代码写个项目，但是项目是写出来的，光想不做不写是不行的，所以我就开始我的”内涵之旅“了。
-日志:
+   #### 介绍：  
+
+ 花了两周闲余时间模仿了一下今日头条旗下的iOS端app内涵段子，如果喜欢的话请给个star。(8.30-9.11) 这个项目是用OC编写，如果有的朋友已经下载下来看了这个项目， 就会意识到这个项目没有一个storyboard或者是nib，不是因为不喜欢用storyboard或者nib，而是因为一直以来就想用纯代码写个项目，（好远大的梦想。。开玩笑的。。），但是项目是写出来的，光想不做不写是不行的，所以我就开始我的”内涵之旅“了。
+
+先贴个图
+
+
+![1.gif](http://upload-images.jianshu.io/upload_images/939127-bec577630d600bdd.gif?imageMogr2/auto-orient/strip)
+
+
+####日志:
 8.30号：没怎么做东西，就是搭建了项目的架构，拉入了之前经常用的一些工具类，宏定义等等。
 8.30主要事项：UITabbarController+UINavigationController项目架构组建。
 部分代码
@@ -170,26 +178,34 @@ typedef NS_ENUM(NSUInteger, NHHomeTableViewCellItemType) {
 
 #### 首页 : 包括点赞、踩、分享、收藏，复制链接，视频的播放，上拉下拉，评论列表，关注列表
 #####首页
-![精选首页.jpeg](http://upload-images.jianshu.io/upload_images/939127-943a3634a77afe9b.jpeg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
-![确认删除.jpeg](http://upload-images.jianshu.io/upload_images/939127-46c677a9543e14fd.jpeg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+
 ![
-![发布.jpeg](http://upload-images.jianshu.io/upload_images/939127-d3e23a8cb176b243.jpeg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
-](http://upload-images.jianshu.io/upload_images/939127-626a0d9dd077ff7e.jpeg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+![3.gif](http://upload-images.jianshu.io/upload_images/939127-98fd99423876390a.gif?imageMogr2/auto-orient/strip)
+](http://upload-images.jianshu.io/upload_images/939127-121e352cd9a21a12.gif?imageMogr2/auto-orient/strip)
+
 
 #### 发现：轮播，热吧列表，推荐的关注用户列表，订阅列表，搜索，附近的人，附近的人的筛选，利用贝塞尔曲线自定义pageControl
 #####发现
-![发现.jpeg](http://upload-images.jianshu.io/upload_images/939127-2ea854e0fb6e9b8d.jpeg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
-![订阅.jpeg](http://upload-images.jianshu.io/upload_images/939127-ad5347d4bfd74af6.jpeg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+
+![4.gif](http://upload-images.jianshu.io/upload_images/939127-67512f783552d3bb.gif?imageMogr2/auto-orient/strip)
+
+![5.gif](http://upload-images.jianshu.io/upload_images/939127-ed0e33ea58625113.gif?imageMogr2/auto-orient/strip)
+
 #### 审核：举报，喜欢和不喜欢，手动左滑刷新，利用贝塞尔曲线和CAShaperLayer加载视图动画
 #####审核
-![审核.jpeg](http://upload-images.jianshu.io/upload_images/939127-f388459f5aa5ed70.jpeg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+
+![8.gif](http://upload-images.jianshu.io/upload_images/939127-42361f35820aad63.gif?imageMogr2/auto-orient/strip)
 
 #### 发布：选择热吧，发布图片文字
 ##### 搜索、发布
-![搜索.jpeg](http://upload-images.jianshu.io/upload_images/939127-44b28984456420c4.jpeg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
-![搜索结果.jpeg](http://upload-images.jianshu.io/upload_images/939127-79ce50ea582d0f80.jpeg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
-![推荐关注.jpeg](http://upload-images.jianshu.io/upload_images/939127-cfefe46478f8a380.jpeg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
-![消息.jpeg](http://upload-images.jianshu.io/upload_images/939127-a2bc5fbee2694445.jpeg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+
+![7.gif](http://upload-images.jianshu.io/upload_images/939127-a9c571614261c037.gif?imageMogr2/auto-orient/strip)
+
+![
+![
+![3.gif](http://upload-images.jianshu.io/upload_images/939127-72780653c0da73cd.gif?imageMogr2/auto-orient/strip)
+](http://upload-images.jianshu.io/upload_images/939127-5e5c5fb61cc82107.gif?imageMogr2/auto-orient/strip)
+](http://upload-images.jianshu.io/upload_images/939127-15a7925817178164.gif?imageMogr2/auto-orient/strip)
 
 #### 用户：用户信息写死在本地，模仿登录逻辑
 #####用户
@@ -404,8 +420,7 @@ typedef NS_ENUM(NSInteger, NHBaseTableViewRowAnimation) {
 - ##### bug有很多，我也没怎么测直接就提交Github了，以后肯定会再更新这个项目吧，但是不一定，公司忙起来就没时间了。。
 -  #####下一阶段的方向大概是swift项目了，现在在着手一个swift小项目，前段时间写的，大概75%完成度了，也会在未来开源出来
 -  #####最后，希望大家能够提出良好的建议和见解，如果想交朋友的可以加我qq3297391688，共同进步，成为一名真正的‘老司机’
-- #####最后的最后，希望大家能喜欢给个star和关注，让我们一起进步。
+- #####最后的最后，希望大家能喜欢给个star和关注，让我们一起进步，开源万岁！。
 
 附： 
 ####[高仿内涵段子Github地址：https://github.com/Charlesyaoxin/NeiHanDuanZI](https://github.com/Charlesyaoxin/NeiHanDuanZI)
- 想了解更多请移步至简书地址《简书地址》：http://www.jianshu.com/users/3930920b505b/latest_articles
