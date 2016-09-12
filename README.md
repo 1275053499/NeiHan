@@ -1,7 +1,4 @@
- 想了解更多请移步至简书地址《简书地址》：http://www.jianshu.com/users/3930920b505b/latest_articles
-###Github 地址 [https://github.com/Charlesyaoxin/NeiHanDuanZI](https://github.com/Charlesyaoxin/NeiHanDuanZI)
 
-    
    #### 介绍：  
 
  花了两周闲余时间模仿了一下今日头条旗下的iOS端app内涵段子，如果喜欢的话请给个star。(8.30-9.11) 这个项目是用OC编写，如果有的朋友已经下载下来看了这个项目， 就会意识到这个项目没有一个storyboard或者是nib，不是因为不喜欢用storyboard或者nib，而是因为一直以来就想用纯代码写个项目，（好远大的梦想。。开玩笑的。。），但是项目是写出来的，光想不做不写是不行的，所以我就开始我的”内涵之旅“了。
@@ -420,5 +417,7 @@ typedef NS_ENUM(NSInteger, NHBaseTableViewRowAnimation) {
 -  #####最后，希望大家能够提出良好的建议和见解，如果想交朋友的可以加我qq3297391688，共同进步，成为一名真正的‘老司机’
 - #####最后的最后，希望大家能喜欢给个star和关注，让我们一起进步，开源万岁！。
 
-附： 
-####[高仿内涵段子Github地址：https://github.com/Charlesyaoxin/NeiHanDuanZI](https://github.com/Charlesyaoxin/NeiHanDuanZI)
+ 想了解更多请移步至简书地址《简书地址》：http://www.jianshu.com/users/3930920b505b/latest_articles
+###Github 地址 [https://github.com/Charlesyaoxin/NeiHanDuanZI](https://github.com/Charlesyaoxin/NeiHanDuanZI)
+
+    
