@@ -1,11 +1,10 @@
 
+
    #### 介绍：  
 
  花了两周闲余时间模仿了一下今日头条旗下的iOS端app内涵段子，如果喜欢的话请给个star。(8.30-9.11)
- 
 ![A2F1D179-F81A-4DB8-9A36-CBF9FA961EC5.png](http://upload-images.jianshu.io/upload_images/939127-59efd2d7d4a6b93b.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
-
-这个项目是用OC编写，如果有的朋友已经下载下来看了这个项目， 就会意识到这个项目没有一个storyboard或者是nib，不是因为不喜欢用storyboard或者nib，而是因为一直以来就想用纯代码写个项目，（好远大的梦想。。开玩笑的。。），但是项目是写出来的，光想不做不写是不行的，所以我就开始我的”内涵之旅“了。
+ 这个项目是用OC编写，如果有的朋友已经下载下来看了这个项目， 就会意识到这个项目没有一个storyboard或者是nib，不是因为不喜欢用storyboard或者nib，而是因为一直以来就想用纯代码写个项目，（好远大的梦想。。开玩笑的。。），但是项目是写出来的，光想不做不写是不行的，所以我就开始我的”内涵之旅“了。
 
 
 ![1.gif](http://upload-images.jianshu.io/upload_images/939127-bec577630d600bdd.gif?imageMogr2/auto-orient/strip)
@@ -176,15 +175,34 @@ typedef NS_ENUM(NSUInteger, NHHomeTableViewCellItemType) {
 ##主要实现的功能如下：
 
 #### 首页 : 包括点赞、踩、分享、收藏，复制链接，视频的播放，上拉下拉，评论列表，关注列表
-#####首页
+#####首页：
+>要点处理：将请求到的列表数据，转化为模型数组，然后计算出模型所对应的frame数组，这样做的好处是防止CellForHeight会计算多次，缺点是计算量大， 需要耐心。
+
+> 利用视图的drawRect方法来达到滚动条滑动的时候的穿透效果，封装分享视图，见NHHomeShareView ，封装带有高斯模糊效果的自定义弹窗，与系统的UIAlertView相差无几，效果更佳。
+
+>评论列表：利于YYLabel和NSAttributeString，将@的用户的名字高亮，加以点击事件。
+
+>分享： 封装分享管理类，配置友盟的appKey和UrlScheme等一系列必要操作。
+
+>图片浏览器，根据数据展示布局九宫格视图，然后利于自定义的NHBaseImgeView，将网络图片的请求处理逻辑全部放到该类中，还记得当SDWebimage的方法加上sd_开头的时候，我们吃过的亏么？
+
+>Gif图的处理，封装一个Gif视图，继承自UIImageView，然后顶部加载loading。
+
 
 ![
 ![3.gif](http://upload-images.jianshu.io/upload_images/939127-98fd99423876390a.gif?imageMogr2/auto-orient/strip)
 ](http://upload-images.jianshu.io/upload_images/939127-121e352cd9a21a12.gif?imageMogr2/auto-orient/strip)
 
 
-#### 发现：轮播，热吧列表，推荐的关注用户列表，订阅列表，搜索，附近的人，附近的人的筛选，利用贝塞尔曲线自定义pageControl
-#####发现
+#### 发现：轮播，热吧列表，推荐的关注用户列表，订阅列表，搜索，附近的人，附近的人的筛选，
+#####发现“
+>要点处理：利用UICollectionview实现无限滚动轮播视图，利于贝塞尔曲线自定义pageControl，类似于系统的UIPageControl，当改变当前索引的时候，曲线改变，设置layer的动画。
+
+>附近的人：思路：当app启动的时候先请求一次定位信息，如果请求到了将经纬度保存，然后如果进入附近的人重新定位，获取最新的经纬度，获取附近的人列表，封装筛选视图，根据性别筛选附近的人。
+
+>搜索：自定义搜索框，如果业务逻辑比较深的话，用系统的UISearchBar就不太现实了，需要让搜索框变得变得高度可定制化。搜索关键字，将搜索结果的文本转化为富文本，自定义多种不同类型的cell，然后显示数据，处理业务逻辑。要点在于，搜索的时候需要同时并发调用三个接口，搜索用户、动态还有热吧.
+
+>这时候处理单个界面的多个并发网络请求用到了dispatch_group[想了解GCD可点击此链接](http://blog.csdn.net/wangzitao126/article/details/43195533), 当然，如果你的项目使用的RAC，那么这个dispatch_group，就可以摒弃了。
 
 ![4.gif](http://upload-images.jianshu.io/upload_images/939127-67512f783552d3bb.gif?imageMogr2/auto-orient/strip)
 
@@ -192,11 +210,21 @@ typedef NS_ENUM(NSUInteger, NHHomeTableViewCellItemType) {
 
 #### 审核：举报，喜欢和不喜欢，手动左滑刷新，利用贝塞尔曲线和CAShaperLayer加载视图动画
 #####审核
+>处理：可以右滑来查看新的内涵段子动画，详情见下面Gif图。利于UICollectionview进行页面展示，自定义UICollectionviewFlowLayout布局。
+
+>封装举报底部视图
+
+>利于UIWebView加载Gif图，这里的处理不是很好
+
+>封装一个带有loading进度条的时候，loading进度条的实现使用了CAShapeLayer和白塞尔曲线以及基本动画，详情可以去项目中的NHCheckTableViewProgressBar这个类。
 
 ![8.gif](http://upload-images.jianshu.io/upload_images/939127-42361f35820aad63.gif?imageMogr2/auto-orient/strip)
 
 #### 发布：选择热吧，发布图片文字
-##### 搜索、发布
+##### 发布
+>发布界面相对简单，利用masonry[masonry地址](https://github.com/SnapKit/Masonry)布局，处理键盘弹出下落通知事件，当键盘申弹出和下落的时候更新约束，可以看下标哥的这篇软文[masonry约束动画](http://blog.csdn.net/woaifen3344/article/details/50114415)
+
+>利于UICollectionview布局图片选择完成后的界面，添加带有占位文字的高度可定制化的textView。
 
 ![7.gif](http://upload-images.jianshu.io/upload_images/939127-a9c571614261c037.gif?imageMogr2/auto-orient/strip)
 
@@ -208,8 +236,14 @@ typedef NS_ENUM(NSUInteger, NHHomeTableViewCellItemType) {
 
 #### 用户：用户信息写死在本地，模仿登录逻辑
 #####用户
+>将用户信息利用归档存储在本地，用NSUserdefault记录用户是否在登陆状态
+
+>修改头像，利用弹出的自定义的ActionSheet，详情可见NHCustomActionSheet类
+
 ![个人.jpeg](http://upload-images.jianshu.io/upload_images/939127-e5633ad9e53919c0.jpeg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
 
+
+>项目中工具类众多，管理类也众多，如果您有需要或者是想了解的话可以去Github查看我的项目源码，还有几个比较好用的Demo也开源了。
 
 ####代码展示
 ```请求基类，在网络请求工具类上一层封装，传递属性，然后获取所有成员变量的值，即为请求参数
@@ -410,18 +444,18 @@ typedef NS_ENUM(NSInteger, NHBaseTableViewRowAnimation) {
 - (void)nh_deleteSingleSection:(NSInteger)section;
 ```
 
-####[简单易用的tableViewControllerGithub地址：https://github.com/Charlesyaoxin/CustomTableViewController](https://github.com/Charlesyaoxin/CustomTableViewController)
+####[简单易用的tableViewControllerGithub地址](https://github.com/Charlesyaoxin/CustomTableViewController)
+
+
 ###分析和总结
-- #####这个项目做得时间比较仓促，前后用了不到两周的时间。
-- #####不知道仔细看的朋友有没有意识到，这是用纯代码写的，并不是自己不习惯用nib或者sb，是因为一直以来想用纯代码写一个项目。
-- ##### 所有的东西都是在公司的事情忙完的情况下编写的，最近公司不是特别忙，所以有时间写点自己的东西，当然下班回家晚上也花了不少时间用在了这个项目上面。
--  #####项目中有些类和文件是之前自己整理的直接拖进去用，一定的意义上来说节省了时间。
-- ##### bug有很多，我也没怎么测直接就提交Github了，以后肯定会再更新这个项目吧，但是不一定，公司忙起来就没时间了。。
--  #####下一阶段的方向大概是swift项目了，现在在着手一个swift小项目，前段时间写的，大概75%完成度了，也会在未来开源出来
--  #####最后，希望大家能够提出良好的建议和见解，如果想交朋友的可以加我qq3297391688，共同进步，成为一名真正的‘老司机’
-- #####最后的最后，希望大家能喜欢给个star和关注，让我们一起进步，开源万岁！。
+-  这个项目做得时间比较仓促，前后用了不到两周的时间。
+-  不知道仔细看的朋友有没有意识到，这是用纯代码写的，并不是自己不习惯用nib或者sb，是因为一直以来想用纯代码写一个项目。
+-   所有的东西都是在公司的事情忙完的情况下编写的，最近公司不是特别忙，所以有时间写点自己的东西，当然下班回家晚上也花了不少时间用在了这个项目上面。
+-  项目中有些类和文件是之前自己整理的直接拖进去用，一定的意义上来说节省了时间。
+-  bug有很多，我也没怎么测直接就提交Github了，以后肯定会再更新这个项目吧
+-  下一阶段的方向大概是swift项目了，现在在着手一个swift小项目，前段时间写的，大概75%完成度了，也会在未来开源出来
+-   最后，希望大家能够提出良好的建议和见解，如果想交朋友的可以加我qq3297391688，共同进步，成为一名真正的‘老司机’，说了这么多，你还不去给个star 
+    
 
  想了解更多请移步至简书地址《简书地址》：http://www.jianshu.com/users/3930920b505b/latest_articles
-###Github 地址 [https://github.com/Charlesyaoxin/NeiHanDuanZI](https://github.com/Charlesyaoxin/NeiHanDuanZI)
-
     
