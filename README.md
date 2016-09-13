@@ -1,6 +1,8 @@
 
 
-   #### 介绍：  
+   #### 介绍： 
+   
+cocoapods安装失败的朋友请看这个[2016最新CocoaPods安装和错误解决http://www.jianshu.com/p/2ef8a38416c4](http://www.jianshu.com/p/2ef8a38416c4)
 
  花了两周闲余时间模仿了一下今日头条旗下的iOS端app内涵段子，如果喜欢的话请给个star。(8.30-9.11)
 ![A2F1D179-F81A-4DB8-9A36-CBF9FA961EC5.png](http://upload-images.jianshu.io/upload_images/939127-59efd2d7d4a6b93b.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
