@@ -1,7 +1,6 @@
 
 
-
-![597d436214da822392419a7788a5ec0805d5d4f7.jpg](http://upload-images.jianshu.io/upload_images/939127-466b369a010ca18a.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+![597d436214da822392419a7788a5ec0805d5d4f7.jpg](http://upload-images.jianshu.io/upload_images/939127-ca979f15d583a065.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
 本文简书地址：[简书入口](http://www.jianshu.com/p/c19052dd96e5)
   
   
