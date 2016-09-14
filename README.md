@@ -2,6 +2,9 @@
 ![597d436214da822392419a7788a5ec0805d5d4f7.jpg](http://upload-images.jianshu.io/upload_images/939127-36a510bfeeb8a0c3.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
 简书地址：[简书入口](http://www.jianshu.com/p/c19052dd96e5)
   
+  
+
+9.14日提示：首页，针对部分出现空指针的情况，朋友们运行的时候自己更改修补下吧， 这个代码我先不更新了，保留下短期内高仿出来这个项目的真实性，谢谢。首页的请求和数据处理在HomeBaseViewController
 
  介绍：  
 
