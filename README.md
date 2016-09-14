@@ -2,7 +2,7 @@
 ![597d436214da822392419a7788a5ec0805d5d4f7.jpg](http://upload-images.jianshu.io/upload_images/939127-36a510bfeeb8a0c3.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
 简书地址：[简书入口](http://www.jianshu.com/p/c19052dd96e5)
   
-  
+
  介绍：  
 
  花了两周的闲余时间模仿了一下今日头条旗下的iOS端app内涵段子，如果喜欢的话请给个star。(8.30-9.11)  
@@ -459,6 +459,6 @@ typedef NS_ENUM(NSInteger, NHBaseTableViewRowAnimation) {
 -  下一阶段的方向大概是swift项目了，现在在着手一个swift小项目，前段时间写的，大概75%完成度了，也会在未来开源出来
 -  如果想交朋友的可以加我qq3297391688，共同进步，成为一名真正的‘老司机’
 -  如果您喜欢这个项目，或者这个项目帮助到了您，请联系我，或者给我点赞和评论吧。
-
+代码先不更新了，针对出现的问题，如果首页出现崩溃现象，朋友们请重新运行一下。
  想了解更多请移步至简书地址《简书地址》：http://www.jianshu.com/users/3930920b505b/latest_articles
     
