@@ -24,16 +24,16 @@ typedef NS_ENUM(NSUInteger, NHHomeTableViewCellItemType) {
 @class NHHomeTableViewCellFrame , NHHomeTableViewCell, NHDiscoverSearchCommonCellFrame, NHNeiHanUserInfoModel;
 @protocol NHHomeTableViewCellDelegate <NSObject>
 
-/** 点击浏览大图*/
-- (void)homeTableViewCell:(NHHomeTableViewCell *)cell didClickImageView:(UIImageView *)imageView currentIndex:(NSInteger)currentIndex urls:(NSArray <NSURL *>*)urls;
-/** 播放视频*/
-- (void)homeTableViewCell:(NHHomeTableViewCell *)cell didClickVideoWithVideoUrl:(NSString *)videoUrl videoCover:(NHBaseImageView *)baseImageView;
 /** 分类*/
 - (void)homeTableViewCellDidClickCategory:(NHHomeTableViewCell *)cell;
 /** 个人中心*/
 - (void)homeTableViewCell:(NHHomeTableViewCell *)cell gotoPersonalCenterWithUserInfo:(NHNeiHanUserInfoModel *)userInfoModel;
 /** 点击底部item*/
 - (void)homeTableViewCell:(NHHomeTableViewCell *)cell didClickItemWithType:(NHHomeTableViewCellItemType)itemType;
+/** 点击浏览大图*/
+- (void)homeTableViewCell:(NHHomeTableViewCell *)cell didClickImageView:(UIImageView *)imageView currentIndex:(NSInteger)currentIndex urls:(NSArray <NSURL *>*)urls;
+/** 播放视频*/
+- (void)homeTableViewCell:(NHHomeTableViewCell *)cell didClickVideoWithVideoUrl:(NSString *)videoUrl videoCover:(NHBaseImageView *)baseImageView;
 
 @optional
 /** 点击关注*/

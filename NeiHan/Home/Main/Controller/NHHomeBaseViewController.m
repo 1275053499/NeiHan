@@ -127,7 +127,15 @@
             
             for (int i = 0; i < model.data.count; i++) {
                 NHHomeServiceDataElement *element = model.data[i];
-                if (element.group) {
+                
+//                NHHomeServiceDataElementMediaTypeLargeImage = 1,
+//                /** Gif图片*/
+//                NHHomeServiceDataElementMediaTypeGif = 2,
+//                /** 视频*/
+//                NHHomeServiceDataElementMediaTypeVideo = 3,
+//                /** 小图*/
+//                NHHomeServiceDataElementMediaTypeLittleImages = 4,
+                if (element.group && element.group.media_type < 5) {
                     [self.dataArray addObject:element];
                     NHHomeTableViewCellFrame *cellFrame = [[NHHomeTableViewCellFrame alloc] init];
                     cellFrame.model = element;
@@ -165,7 +173,9 @@
             
             for (int i = 0; i < model.data.count; i++) {
                 NHHomeServiceDataElement *element = model.data[i];
-                if (element.group) {
+//                if (element.group) {
+                
+                if (element.group && element.group.media_type < 5) {
                     [self.dataArray addObject:element];
                     NHHomeTableViewCellFrame *cellFrame = [[NHHomeTableViewCellFrame alloc] init];
                     cellFrame.model = element;
