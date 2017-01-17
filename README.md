@@ -2,23 +2,14 @@
 ![597d436214da822392419a7788a5ec0805d5d4f7.jpg](http://upload-images.jianshu.io/upload_images/939127-36a510bfeeb8a0c3.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
 简书地址：[简书入口](http://www.jianshu.com/p/c19052dd96e5)
   
-  
-
-9.16日提示 修复了一下首页因为数据原因引起的崩溃问题。内涵段子服务数据结构复杂，有些判断逻辑可能不是很严谨，造成了崩溃，大家可以下载最新版本的
-
- 介绍：  
-
- 花了两周的闲余时间模仿了一下今日头条旗下的iOS端app内涵段子，如果喜欢的话请给个star。(8.30-9.11)  
-
+ 
  这个项目是用OC编写，如果有的朋友已经下载下来看了这个项目， 就会意识到这个项目没有一个storyboard或者是nib，不是因为不喜欢用storyboard或者nib，而是因为一直以来就想用纯代码写个项目，（好远大的梦想。。开玩笑的。。），但是项目是写出来的，光想不做不写是不行的，所以我就开始我的”内涵之旅“了。
 
 
 ![1.gif](http://upload-images.jianshu.io/upload_images/939127-bec577630d600bdd.gif?imageMogr2/auto-orient/strip)
 
 
-####日志:
-8.30号：没怎么做东西，就是搭建了项目的架构，拉入了之前经常用的一些工具类，宏定义等等。
-8.30主要事项：UITabbarController+UINavigationController项目架构组建。
+UITabbarController+UINavigationController项目架构组建。
 部分代码
 ```
 // 添加子控制器
@@ -56,8 +47,7 @@
 - (void)nh_sendRequestWithCompletion:(NHAPIDicCompletion)completion;
 ```
 
-9.1号， 控制器和cell以及普通文本图片数据的展示，以及发布界面的视图封装。
-9.2 - 9.4 首页的回调处理以及发现界面
+控制器和cell以及普通文本图片数据的展示，以及发布界面的视图封装。
 ``` 
 typedef NS_ENUM(NSUInteger, NHHomeTableViewCellItemType) {
     /** 点赞*/
@@ -109,7 +99,7 @@ typedef NS_ENUM(NSUInteger, NHHomeTableViewCellItemType) {
 /** 踩*/
 - (void)didBury;
 ```
-9.5 - 9.7审核界面的逻辑处理和动画处理，以及发现界面的轮播图和自定义pageControl
+审核界面的逻辑处理和动画处理，以及发现界面的轮播图和自定义pageControl
 ```
 - (void)setCurrentIndex:(NSInteger)currentIndex {
     _currentIndex = currentIndex;
@@ -156,10 +146,10 @@ typedef NS_ENUM(NSUInteger, NHHomeTableViewCellItemType) {
     self.showPageLayer.path = path.CGPath;
 }
 ```
-9.8 - 9.9，搜索界面的逻辑处理
+搜索界面的逻辑处理
 个人中心内容的填充，部分公共空数据界面视图的处理
-9.10 视频的播放和一些地方的修修补补
-9.11部分动画效果的完善，例如点赞和踩，关注等。。以及简单的测试。9.11晚上编写博文上传Github。
+视频的播放和一些地方的修修补补
+部分动画效果的完善，例如点赞和踩，关注等。。以及测试。
 ``` 
 @interface NHCustomCommonEmptyView : UIView
 @property (nonatomic, weak) UIImageView *topTipImageView;
@@ -208,7 +198,7 @@ typedef NS_ENUM(NSUInteger, NHHomeTableViewCellItemType) {
 
 >搜索：自定义搜索框，如果业务逻辑比较深的话，用系统的UISearchBar就不太现实了，需要让搜索框变得变得高度可定制化。搜索关键字，将搜索结果的文本转化为富文本，自定义多种不同类型的cell，然后显示数据，处理业务逻辑。要点在于，搜索的时候需要同时并发调用三个接口，搜索用户、动态还有热吧.
 
->这时候处理单个界面的多个并发网络请求用到了dispatch_group[想了解GCD可点击此链接](http://blog.csdn.net/wangzitao126/article/details/43195533), 当然，如果你的项目使用的RAC，那么这个dispatch_group，就可以摒弃了。
+>这时候处理单个界面的多个并发网络请求用到了dispatch_group[想了解GCD可点击此链接](http://blog.csdn.net/wangzitao126/article/details/43195533)
 
 ![4.gif](http://upload-images.jianshu.io/upload_images/939127-67512f783552d3bb.gif?imageMogr2/auto-orient/strip)
 
@@ -453,15 +443,8 @@ typedef NS_ENUM(NSInteger, NHBaseTableViewRowAnimation) {
 ####[简单易用的tableViewControllerGithub地址](https://github.com/Charlesyaoxin/CustomTableViewController)
 
 
-###分析和总结
--  这个项目做得时间比较仓促，前后用了不到两周的时间。
+###分析和总结 
 -  不知道仔细看的朋友有没有意识到，这是用纯代码写的，并不是自己不习惯用nib或者sb，是因为一直以来想用纯代码写一个项目。
--   所有的东西都是在公司的事情忙完的情况下编写的，最近公司不是特别忙，所以有时间写点自己的东西，当然下班回家晚上也花了不少时间用在了这个项目上面。
 -  项目中有些类和文件是之前自己整理的直接拖进去用，一定的意义上来说节省了时间。
--  bug有很多，我也没怎么测直接就提交Github了，以后可能会再更新这个项目吧
--  下一阶段的方向大概是swift项目了，现在在着手一个swift小项目，前段时间写的，大概75%完成度了，也会在未来开源出来，这个项目的话短期内不会再更新了。
--  如果想交朋友的可以加我qq3297391688，共同进步，成为一名真正的‘老司机’
--  如果您喜欢这个项目，或者这个项目帮助到了您，请联系我，或者给我点赞和评论吧。
-代码先不更新了，针对出现的问题，如果首页出现崩溃现象，朋友们请重新运行一下。
  想了解更多请移步至简书地址《简书地址》：http://www.jianshu.com/users/3930920b505b/latest_articles
     
