@@ -125,6 +125,10 @@
     return _noNetworkEmptyView;
 }
 
+- (void)loadData {
+    
+}
+
 - (void)showLoadingAnimation {
     NHCustomLoadingAnimationView *animation = [[NHCustomLoadingAnimationView alloc] init];
     [animation showInView:self.view];

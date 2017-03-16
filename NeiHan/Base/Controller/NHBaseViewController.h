@@ -34,4 +34,6 @@
 
 - (void)hideLoadingAnimation;
 
+- (void)loadData;
+
 @end
