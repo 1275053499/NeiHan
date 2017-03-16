@@ -131,7 +131,7 @@ static NSString *cellID = @"cellID";
 int transX = 0;
 - (void)panGest:(UIPanGestureRecognizer *)gest {
    
-    if (self.preOffset.x + kScreenWidth == self.colView.contentSize.width) return ;
+    if (self.preOffset.x + kScreenWidth == self.colView.contentSize.width) return;
     
     // 右滑的时候设置偏移量
     if (gest.state == UIGestureRecognizerStateBegan || gest.state == UIGestureRecognizerStateChanged) {
@@ -139,7 +139,7 @@ int transX = 0;
             if (translation.x < 0) { // 右滑
             transX += (-translation.x);
             if (transX > 100) {
-                if (self.colView.contentOffset.x - self.preOffset.x == kScreenWidth) return ;
+                if (self.colView.contentOffset.x - self.preOffset.x == kScreenWidth) return;
                 CGPoint offset = self.preOffset;
                 offset.x += kScreenWidth;
                 [self.colView setContentOffset:offset];
@@ -166,7 +166,7 @@ int transX = 0;
 
 // 自动滑动
 - (void)slide {
-    if (self.colView.contentOffset.x - self.preOffset.x == kScreenWidth) return ;
+    if (self.colView.contentOffset.x - self.preOffset.x == kScreenWidth) return;
     CGPoint offset = self.preOffset;
     offset.x += kScreenWidth;
     [self.colView setContentOffset:offset];

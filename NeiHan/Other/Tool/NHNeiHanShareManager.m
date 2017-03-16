@@ -51,7 +51,7 @@ static NHNeiHanShareManager *_singleton = nil;
         case NHNeiHanShareTypeWechatSession: {
             if (![WXApi isWXAppInstalled]) {
 //                [MBProgressHUD showMessage:@"微信没有安装,请先安装微信" toView:controller.view];
-                return ;
+                return;
             }
 //            [UMSocialData defaultData].extConfig.wxMessageType = UMSocialWXMessageTypeImage;
             UMSocialUrlResource *resource = [[UMSocialUrlResource alloc] initWithSnsResourceType:UMSocialUrlResourceTypeDefault url:@"http://www.jianshu.com/users/3930920b505b/latest_articles"];
@@ -65,7 +65,7 @@ static NHNeiHanShareManager *_singleton = nil;
         case NHNeiHanShareTypeWechat: {
             if (![WXApi isWXAppInstalled]) {
 //                [MBProgressHUD showMessage:@"微信没有安装,请先安装微信" toView:controller.view];
-                return ;
+                return;
             }
             [UMSocialData defaultData].extConfig.wxMessageType = UMSocialWXMessageTypeImage;
             UMSocialUrlResource *resource = [[UMSocialUrlResource alloc] initWithSnsResourceType:UMSocialUrlResourceTypeDefault url:url];
@@ -79,7 +79,7 @@ static NHNeiHanShareManager *_singleton = nil;
         case NHNeiHanShareTypeWeibo: {
             if (![WeiboSDK isWeiboAppInstalled]) {
 //                [MBProgressHUD showMessage:@"微博没有安装,请先安装微博" toView:controller.view];
-                return ;
+                return;
             }
             UMSocialUrlResource *resource = [[UMSocialUrlResource alloc] initWithSnsResourceType:UMSocialUrlResourceTypeDefault url:url];
             [[UMSocialDataService defaultDataService]  postSNSWithTypes:@[UMShareToSina] content:content image:image location:nil urlResource:resource presentedController:controller completion:^(UMSocialResponseEntity *shareResponse){
@@ -92,7 +92,7 @@ static NHNeiHanShareManager *_singleton = nil;
         case NHNeiHanShareTypeQQ: {
             if (![TencentApiInterface isTencentAppInstall:kIphoneQQ]) {
 //                [MBProgressHUD showMessage:@"QQ没有安装,请先安装QQ" toView:controller.view];
-                return ;
+                return;
             }
             [UMSocialData defaultData].extConfig.qqData.qqMessageType = UMSocialQQMessageTypeImage;
             UMSocialUrlResource *resource = [[UMSocialUrlResource alloc] initWithSnsResourceType:UMSocialUrlResourceTypeDefault url:url];
@@ -106,7 +106,7 @@ static NHNeiHanShareManager *_singleton = nil;
         case NHNeiHanShareTypeQZone: {
             if (![TencentApiInterface isTencentAppInstall:kIphoneQQ]) {
 //                [MBProgressHUD showMessage:@"QQ没有安装,请先安装QQ" toView:controller.view];
-                return ;
+                return;
             }
             [UMSocialData defaultData].extConfig.qqData.qqMessageType = UMSocialQQMessageTypeImage;
             UMSocialUrlResource *resource = [[UMSocialUrlResource alloc] initWithSnsResourceType:UMSocialUrlResourceTypeDefault url:url];

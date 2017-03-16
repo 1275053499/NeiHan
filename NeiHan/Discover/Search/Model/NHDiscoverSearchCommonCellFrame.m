@@ -18,7 +18,7 @@
 - (void)setGroup:(NHHomeServiceDataElementGroup *)group {
     _group = group;
     if (group == nil) {
-        return ;
+        return;
     }
     
     

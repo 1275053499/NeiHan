@@ -11,41 +11,18 @@
 @interface NHCustomSlideViewController () <UIScrollViewDelegate>
 
 @property (nonatomic, weak) UIScrollView *scrollView;
+
 @property (nonatomic, strong) NSMutableDictionary *displayVcs;
+
 @property (nonatomic, strong) NSMutableDictionary *memoryCache;
 
 @property (nonatomic, assign) NSInteger currentIndex;
+
 @property (nonatomic, weak) UIViewController *currentViewController;
+
 @end
+
 @implementation NHCustomSlideViewController
-
-- (NSMutableDictionary *)displayVcs {
-    if (!_displayVcs) {
-        _displayVcs = [[NSMutableDictionary alloc] init];
-    }
-    return _displayVcs;
-}
-
-- (NSMutableDictionary *)memoryCache {
-    if (!_memoryCache) {
-        _memoryCache = [[NSMutableDictionary alloc] init];
-    }
-    return _memoryCache;
-}
-
-- (UIScrollView *)scrollView {
-    if (!_scrollView) {
-        UIScrollView *scroll = [[UIScrollView alloc] init];
-        [self.view addSubview:scroll];
-        _scrollView = scroll;
-        scroll.delegate = self;
-        scroll.showsHorizontalScrollIndicator = NO;
-        scroll.showsVerticalScrollIndicator = NO;
-        scroll.pagingEnabled = YES;
-        scroll.bounces = NO;
-    }
-    return _scrollView;
-}
 
 - (void)viewDidLayoutSubviews {
     [super viewDidLayoutSubviews];
@@ -56,10 +33,6 @@
 - (void)setSeletedIndex:(NSInteger)seletedIndex {
     _seletedIndex = seletedIndex;
     [self.scrollView setContentOffset:CGPointMake(kScreenWidth * seletedIndex, 0) animated:YES];
-}
-
-- (void)viewDidLoad {
-    [super viewDidLoad];
 }
 
 - (void)reloadData {
@@ -78,13 +51,11 @@
     self.scrollView.contentSize = CGSizeMake([UIScreen mainScreen].bounds.size.width * [self childViewControllerCount], self.scrollView.frame.size.height);
     [self scrollViewDidScroll:self.scrollView];
 }
+
 // 添加控制器
 - (void)addChildViewController:(UIViewController *)childController atIndex:(NSInteger)index {
     
-    if ([self.childViewControllers containsObject:childController]) {
-        return ;
-    }
-    
+    if ([self.childViewControllers containsObject:childController]) return;
     // 添加控制器 并放入正在展示的控制器中
     [self addChildViewController:childController];
     [self.displayVcs setObject:childController forKey:@(index)];
@@ -96,9 +67,7 @@
 // 移除控制器
 - (void)removeChildViewController:(UIViewController *)childController atIndex:(NSInteger)index {
     
-    if (childController == nil) {
-        return ;
-    }
+    if (!childController) return;
     // 当前显示删除、放入缓存中
     [childController.view removeFromSuperview];
     [childController willMoveToParentViewController:nil];
@@ -121,7 +90,7 @@
     
     for (NSInteger index = start; index <= end; index++) {
         UIViewController *viewController = [self.displayVcs objectForKey:@(index)];
-        if (viewController == nil) {
+        if (!viewController) {
             // 获取当前控制器
             [self initializedViewControllerAtIndex:index];
         }
@@ -161,13 +130,14 @@
         [self.delgate customSlideViewController:self slideOffset:scrollView.contentOffset];
     }
 }
+
 // 获取当前控制器
 // 1. 从缓存中
 // 2. 从代理中获取并且放入缓存中
 - (void)initializedViewControllerAtIndex:(NSInteger)index {
     // 从缓存中取出控制器
     UIViewController *viewController = [self.memoryCache objectForKey:@(index)];
-    if (viewController == nil) {
+    if (!viewController) {
         if ([self.dataSource respondsToSelector:@selector(slideViewController:viewControllerAtIndex:)]) {
             UIViewController *viewController = [self.dataSource slideViewController:self viewControllerAtIndex:index];
             [self addChildViewController:viewController atIndex:index];
@@ -183,4 +153,27 @@
     }
     return 0;
 }
+
+- (UIScrollView *)scrollView {
+    if (!_scrollView) {
+        UIScrollView *scroll = [[UIScrollView alloc] init];
+        [self.view addSubview:scroll];
+        _scrollView = scroll;
+        scroll.delegate = self;
+        scroll.showsHorizontalScrollIndicator = NO;
+        scroll.showsVerticalScrollIndicator = NO;
+        scroll.pagingEnabled = YES;
+        scroll.bounces = NO;
+    }
+    return _scrollView;
+}
+
+- (NSMutableDictionary *)displayVcs {
+    return !_displayVcs ? _displayVcs = [NSMutableDictionary new] : _displayVcs;
+}
+
+- (NSMutableDictionary *)memoryCache {
+    return !_memoryCache ? _memoryCache = [NSMutableDictionary new] : _memoryCache;
+}
+
 @end

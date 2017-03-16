@@ -46,7 +46,7 @@
 // 设置数据
 - (void)setModels:(NSArray <NHServiceListModel *> *)models {
     if (models.count == 0) {
-        return ;
+        return;
     }
     for (NHServiceListModel *model in models) {
         if ([model.name isKindOfClass:[NSString class]]) {
@@ -64,10 +64,10 @@
 - (void)setUpViews {
     
     if (self.titles.count == 0) {
-        return ;
+        return;
     }
     if (self.titles.count != self.urls.count) {
-        return ;
+        return;
     }
     for (int i = 0; i < self.urls.count; i++) {
         NSString *url = self.urls[i];

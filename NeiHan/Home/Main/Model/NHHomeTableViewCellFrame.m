@@ -42,12 +42,12 @@
 
 - (void)setModel:(NHHomeServiceDataElement *)model {
     if (model == nil) {
-        return ;
+        return;
     }
     _model = model;
     NHHomeServiceDataElementGroup *group = model.group;
     if (group == nil) {
-        return ;
+        return;
     }
     
     
@@ -72,7 +72,7 @@
         self.bottomViewF = CGRectMake(bottomX, bottomY, bottomW, bottomH);
     
         self.cellHeight = CGRectGetMaxY(self.bottomViewF) + 10;
-        return ;
+        return;
     }
     
     

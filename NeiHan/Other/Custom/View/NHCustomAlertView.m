@@ -238,7 +238,7 @@
 - (void)showInView:(UIView *)view {
     
     BOOL isShowing = [NHCustomAlertView alertIsShowingInView:view];
-    if (isShowing) return ;
+    if (isShowing) return;
     
     UIView *content = view ? view  : [UIApplication sharedApplication].keyWindow;
     _blurView.blurRadius = 0;

@@ -152,8 +152,8 @@ const char NHBaseTableVcNavLeftItemHandleKey;
 
 /** 导航栏标题*/
 - (void)setNavItemTitle:(NSString *)navItemTitle {
-    if ([navItemTitle isKindOfClass:[NSString class]] == NO) return ;
-    if ([navItemTitle isEqualToString:_navItemTitle]) return ;
+    if ([navItemTitle isKindOfClass:[NSString class]] == NO) return;
+    if ([navItemTitle isEqualToString:_navItemTitle]) return;
     _navItemTitle = navItemTitle.copy;
     self.navigationItem.title = navItemTitle;
 }
@@ -173,7 +173,7 @@ const char NHBaseTableVcNavLeftItemHandleKey;
 }
 
 - (void)setBarStyle:(UIStatusBarStyle)barStyle {
-    if (_barStyle == barStyle) return ;
+    if (_barStyle == barStyle) return;
     _barStyle = barStyle;
     [self setNeedsStatusBarAppearanceUpdate];
 }
@@ -324,7 +324,7 @@ const char NHBaseTableVcNavLeftItemHandleKey;
 /** 刷新*/
 - (void)nh_refresh {
     if (self.refreshType == NHBaseTableVcRefreshTypeNone || self.refreshType == NHBaseTableVcRefreshTypeOnlyCanLoadMore) {
-        return ;
+        return;
     }
     self.isRefresh = YES; self.isLoadMore = NO;
 }
@@ -332,10 +332,10 @@ const char NHBaseTableVcNavLeftItemHandleKey;
 /** 上拉加载*/
 - (void)nh_loadMore {
     if (self.refreshType == NHBaseTableVcRefreshTypeNone || self.refreshType == NHBaseTableVcRefreshTypeOnlyCanRefresh) {
-        return ;
+        return;
     }
     if (self.dataArray.count == 0) {
-        return ;
+        return;
     }
     self.isRefresh = NO; self.isLoadMore = YES;
     
@@ -346,7 +346,7 @@ const char NHBaseTableVcNavLeftItemHandleKey;
 }
 
 - (void)nh_commonConfigResponseWithResponse:(id)response isRefresh:(BOOL)isRefresh modelClass:(__unsafe_unretained Class)modelClass emptyText:(NSString *)emptyText {
-    if ([response isKindOfClass:[NSArray class]] == NO) return ;
+    if ([response isKindOfClass:[NSArray class]] == NO) return;
     if (self.isRefresh) { // 刷新
         
         // 停止刷新
@@ -491,7 +491,7 @@ const char NHBaseTableVcNavLeftItemHandleKey;
 
 // 设置分割线偏移间距并适配
 - (void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath {
-    if (!self.needCellSepLine) return ;
+    if (!self.needCellSepLine) return;
     UIEdgeInsets edgeInsets = UIEdgeInsetsMake(0, 15, 0, 0);
     if ([self respondsToSelector:@selector(nh_sepEdgeInsetsAtIndexPath:)]) {
         edgeInsets = [self nh_sepEdgeInsetsAtIndexPath:indexPath];

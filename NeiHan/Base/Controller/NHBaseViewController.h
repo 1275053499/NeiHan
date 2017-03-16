@@ -6,9 +6,7 @@
 //  Copyright © 2016年 Charles. All rights reserved.
 //
 
-#import <UIKit/UIKit.h>
-
-typedef void(^NHBaseViewControllerHandle)();
+#import <UIKit/UIKit.h> 
 
 @interface NHBaseViewController : UIViewController
 
@@ -32,14 +30,8 @@ typedef void(^NHBaseViewControllerHandle)();
 
 - (void)addChildVc:(UIViewController *)childVc;
 
-/** 加载中*/
 - (void)showLoadingAnimation;
 
-/** 停止加载*/
 - (void)hideLoadingAnimation;
 
-/** 请求数据，交给子类去实现*/
-- (void)loadData;
-
-@property (nonatomic, assign) BOOL isNetworkReachable;
 @end

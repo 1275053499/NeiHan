@@ -92,7 +92,7 @@
     if (self.placeHolderTextView.text.length == 0) {
         NHCustomAlertView *alert = [[NHCustomAlertView alloc] initWithTitle:@"文本内容不能为空" cancel:nil sure:@"确定"];
         [alert showInView:self.view.window];
-        return ;
+        return;
     }
     [MBProgressHUD showLoading:self.view.window];
    __block BOOL successFlag = NO;
@@ -164,7 +164,7 @@
 }
 
 - (void)configKeyBoardWithHidden:(BOOL)hidden userInfo:(id)userInfo {
-    if (userInfo == nil) return ;
+    if (userInfo == nil) return;
     CGRect endRect = [userInfo[UIKeyboardFrameEndUserInfoKey] CGRectValue];
     self.bottomViewY = kScreenHeight - kTopBarHeight - kBottomViewH - (hidden ? 0 : endRect.size.height);
     

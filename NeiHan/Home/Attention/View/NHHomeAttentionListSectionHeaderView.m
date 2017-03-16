@@ -19,7 +19,7 @@
 
 - (void)setTipText:(NSString *)tipText {
     if (tipText == nil) {
-        return ;
+        return;
     }
     _tipText = tipText;
     self.tipL.text = [NSString stringWithFormat:@"  %@", tipText];

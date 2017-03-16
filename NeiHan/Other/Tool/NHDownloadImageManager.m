@@ -22,7 +22,7 @@
               progressHandle:(void(^)(CGFloat progres))progressHandle {
     
     if (URL == nil) {
-        return ;
+        return;
     }
     UIImage *image = [self cacheImageWithURL:URL];
     if (image) {
@@ -34,7 +34,7 @@
             progressHandle(1.0);
         }
         
-        return ;
+        return;
     }
     
 //    [yy];

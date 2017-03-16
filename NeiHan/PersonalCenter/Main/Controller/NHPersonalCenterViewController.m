@@ -322,12 +322,12 @@
             // 指针不变，只需要更换值
             NHHomeTableViewCell *cell = [self.tableView cellForRowAtIndexPath:indexPath];
             if ([actionname isEqualToString:@"digg"]) {
-                if (cellFrame.model.group.user_digg) return ;
+                if (cellFrame.model.group.user_digg) return;
                 cellFrame.model.group.user_digg = 1;
                 cellFrame.model.group.digg_count += 1;
                 [cell didDigg];
             } else if ([actionname isEqualToString:@"bury"]) {
-                if (cellFrame.model.group.user_bury) return ;
+                if (cellFrame.model.group.user_bury) return;
                 cellFrame.model.group.user_bury = 1;
                 cellFrame.model.group.bury_count += 1;
                 [cell didBury];

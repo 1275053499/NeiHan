@@ -15,10 +15,18 @@
 @end
 
 @interface NHCustomPlaceHolderTextView : UITextView
+
+
 @property (nonatomic, weak) id <NHCustomPlaceHolderTextViewDelegate> del;
+
 @property (nonatomic,copy) NSString *placehoder;
+
 @property (nonatomic,strong)UIColor *placehoderColor;
+
 @property (nonatomic, assign) CGFloat placeholderTopMargin;
+
 @property (nonatomic, assign) CGFloat placeholderLeftMargin;
+
 @property (nonatomic, strong) UIFont *placeholderFont;
+
 @end

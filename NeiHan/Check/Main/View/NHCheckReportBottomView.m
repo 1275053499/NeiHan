@@ -98,7 +98,7 @@
 
 - (void)btnClick:(UIButton *)btn {
     if (self.selectButton == btn) {
-        return ;
+        return;
     }
     self.selectButton.selected = NO;
     btn.selected = YES;

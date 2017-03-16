@@ -116,7 +116,7 @@
     [super nh_loadMore];
     
     if (self.dataArray.count == 0) {
-        return ;
+        return;
     }
     // 内涵加载更多，是根据max_time来加载，不是根据page等字段，所以只需要传递当前time
     [self.request nh_sendRequestWithCompletion:^(id response, BOOL success, NSString *message) {
@@ -149,7 +149,7 @@
 }
 
 - (void)loadData {
-    if (!self.request) return ;
+    if (!self.request) return;
     [self.request nh_sendRequestWithCompletion:^(id response, BOOL success, NSString *message) {
         if (success) {
             [self hideLoadingView]; 
@@ -295,12 +295,12 @@
             // 指针不变，只需要更换值
             NHHomeTableViewCell *cell = [self.tableView cellForRowAtIndexPath:indexPath];
             if ([actionname isEqualToString:@"digg"]) {
-                if (cellFrame.model.group.user_digg) return ;
+                if (cellFrame.model.group.user_digg) return;
                 cellFrame.model.group.user_digg = 1;
                 cellFrame.model.group.digg_count += 1;
                 [cell didDigg];
             } else if ([actionname isEqualToString:@"bury"]) {
-                if (cellFrame.model.group.user_bury) return ;
+                if (cellFrame.model.group.user_bury) return;
                 cellFrame.model.group.user_bury = 1;
                 cellFrame.model.group.bury_count += 1;
                 [cell didBury];

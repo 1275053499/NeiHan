@@ -82,7 +82,7 @@
 #pragma mark - NHDiscoverNearByFilterViewDelegate
 - (void)discoverNearByFilterView:(NHDiscoverNearByFilterView *)filterView didFilterWithType:(NHDiscoverNearByFilterType)filterType {
     if (filterType == NHDiscoverNearByFilterTypeClearLoc) {
-        return ;
+        return;
     }
 
     if (filterType == NHDiscoverNearByFilterTypeAll) {

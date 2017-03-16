@@ -77,7 +77,7 @@
 
 - (void)setPlaceHolderColor:(UIColor *)placeHolderColor {
     if ([placeHolderColor isKindOfClass:[UIColor class]] == NO) {
-        return ;
+        return;
     }
     _placeHolderColor = placeHolderColor;
     [self setValue:placeHolderColor forKeyPath:@"_placeholderLabel.textColor"];

@@ -23,7 +23,7 @@
     _model = model;
     NHHomeServiceDataElementGroup *group = model.group;
     if (group == nil) {
-        return ;
+        return;
     }
     // 文本
     CGFloat contentX = 17;

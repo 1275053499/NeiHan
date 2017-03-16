@@ -89,7 +89,7 @@
     _modelArray = tmp.copy;
     
     if (modelArray.count == 0) {
-        return ;
+        return;
     }
     self.pageControl.numberOfItems = _modelArray.count;
 

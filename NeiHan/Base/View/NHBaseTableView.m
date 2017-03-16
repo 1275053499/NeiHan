@@ -73,7 +73,7 @@
     [self nh_reloadSingleRowAtIndexPath:indexPath animation:None];
 }
 - (void)nh_reloadSingleRowAtIndexPath:(NSIndexPath *)indexPath animation:(NHBaseTableViewRowAnimation)animation {
-    if (!indexPath) return ;
+    if (!indexPath) return;
     NSInteger sectionNumber = self.numberOfSections;
     NSInteger section = indexPath.section;
     NSInteger rowNumber = [self numberOfRowsInSection:section];
@@ -93,7 +93,7 @@
     [self nh_reloadRowsAtIndexPaths:indexPaths animation:None];
 }
 - (void)nh_reloadRowsAtIndexPaths:(NSArray<NSIndexPath *> *)indexPaths animation:(NHBaseTableViewRowAnimation)animation {
-    if (!indexPaths.count) return ;
+    if (!indexPaths.count) return;
     WeakSelf(weakSelf);
     [indexPaths enumerateObjectsUsingBlock:^(NSIndexPath * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
         if ([obj isKindOfClass:[NSIndexPath class]]) {
@@ -122,7 +122,7 @@
     [self nh_reloadSections:sections animation:None];
 }
 - (void)nh_reloadSections:(NSArray<NSNumber *> *)sections animation:(NHBaseTableViewRowAnimation)animation {
-    if (!sections.count) return ;
+    if (!sections.count) return;
     WeakSelf(weakSelf);
     [sections enumerateObjectsUsingBlock:^(NSNumber *  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
         if ([obj isKindOfClass:[NSNumber class]]) {
@@ -136,7 +136,7 @@
     [self nh_deleteSingleRowAtIndexPath:indexPath animation:Fade];
 }
 - (void)nh_deleteSingleRowAtIndexPath:(NSIndexPath *)indexPath animation:(NHBaseTableViewRowAnimation)animation {
-    if (!indexPath) return ;
+    if (!indexPath) return;
     NSInteger sectionNumber = self.numberOfSections;
     NSInteger section = indexPath.section;
     NSInteger rowNumber = [self numberOfRowsInSection:section];
@@ -158,7 +158,7 @@
     [self nh_deleteRowsAtIndexPaths:indexPaths animation:Fade];
 }
 - (void)nh_deleteRowsAtIndexPaths:(NSArray<NSIndexPath *> *)indexPaths animation:(NHBaseTableViewRowAnimation)animation {
-    if (!indexPaths.count) return ;
+    if (!indexPaths.count) return;
     WeakSelf(weakSelf);
     [indexPaths enumerateObjectsUsingBlock:^(NSIndexPath * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
         if ([obj isKindOfClass:[NSIndexPath class]]) {
@@ -188,7 +188,7 @@
     [self nh_deleteSections:sections animation:Fade];
 }
 - (void)nh_deleteSections:(NSArray<NSNumber *> *)sections animation:(NHBaseTableViewRowAnimation)animation {
-    if (!sections.count) return ;
+    if (!sections.count) return;
     WeakSelf(weakSelf);
     [sections enumerateObjectsUsingBlock:^(NSNumber *  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
         if ([obj isKindOfClass:[NSNumber class]]) {
@@ -203,7 +203,7 @@
 }
 /** 增加单行，动画自定义*/
 - (void)nh_insertSingleRowAtIndexPath:(NSIndexPath *)indexPath animation:(NHBaseTableViewRowAnimation)animation {
-    if (!indexPath) return ;
+    if (!indexPath) return;
     NSInteger sectionNumber = self.numberOfSections;
     NSInteger section = indexPath.section;
     NSInteger row = indexPath.row;
@@ -244,7 +244,7 @@
 }
 /** 增加多行，动画自定义*/
 - (void)nh_insertRowsAtIndexPaths:(NSArray<NSIndexPath *> *)indexPaths animation:(NHBaseTableViewRowAnimation)animation {
-    if (indexPaths.count == 0) return ;
+    if (indexPaths.count == 0) return;
     WeakSelf(weakSelf);
     [indexPaths enumerateObjectsUsingBlock:^(NSIndexPath * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
         if ([obj isKindOfClass:[NSIndexPath class]]) {
@@ -259,7 +259,7 @@
 }
 /** 增加多section，动画默认*/
 - (void)nh_insertSections:(NSArray <NSNumber *>*)sections animation:(NHBaseTableViewRowAnimation)animation {
-    if (sections.count == 0) return ;
+    if (sections.count == 0) return;
     WeakSelf(weakSelf);
     [sections enumerateObjectsUsingBlock:^(NSNumber * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
         if ([obj isKindOfClass:[NSNumber class]]) {

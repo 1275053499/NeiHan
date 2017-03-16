@@ -11,9 +11,7 @@
 @implementation NHBaseTableHeaderFooterView
 
 + (instancetype)headerFooterViewWithTableView:(UITableView *)tableView {
-    if (tableView == nil) {
-        return [[self alloc] init];
-    }
+    if (!tableView) return [[self alloc] init];
     NSString *classname = NSStringFromClass([self class]);
     NSString *identifer = [classname stringByAppendingString:@"HeaderFooterID"];
     [tableView registerClass:[self class] forHeaderFooterViewReuseIdentifier:identifer];
@@ -21,9 +19,7 @@
 }
 
 + (instancetype)nibHeaderFooterViewWithTableView:(UITableView *)tableView {
-    if (tableView == nil) {
-        return [[NSBundle mainBundle] loadNibNamed:NSStringFromClass([self class]) owner:nil options:nil].firstObject;
-    }
+    if (!tableView) return [[NSBundle mainBundle] loadNibNamed:NSStringFromClass([self class]) owner:nil options:nil].firstObject;
     NSString *classname = NSStringFromClass([self class]);
     NSString *identifer = [classname stringByAppendingString:@"nibHeaderFooterID"];
     UINib *nib = [UINib nibWithNibName:classname bundle:nil];

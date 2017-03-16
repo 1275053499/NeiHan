@@ -29,7 +29,7 @@
 
 - (void)clickDefault {
     if (_itemTitles.count == 0) {
-        return ;
+        return;
     }
     [self btnClick:(UIButton *)[self viewWithTag:1]];
 }

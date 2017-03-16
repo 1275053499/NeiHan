@@ -218,7 +218,7 @@
 - (void)show {
     
     if ([[[UIApplication sharedApplication] keyWindow] viewWithTag:kTag]) {
-        return ;
+        return;
     }
     
     self.backgroundView.alpha = 0.0;

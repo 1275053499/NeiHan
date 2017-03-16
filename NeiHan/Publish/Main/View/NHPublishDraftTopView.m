@@ -29,7 +29,7 @@
 - (void)setTopicName:(NSString *)topicName {
     _topicName = topicName;
     if (topicName.length == 0) {
-        return ;
+        return;
     }
     [self.topicBtn setTitle:topicName forState:UIControlStateNormal];
     

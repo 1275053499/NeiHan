@@ -83,7 +83,7 @@
 - (void)setCellFrame:(NHHomeTableViewCellFrame *)cellFrame {
     
     if (_cellFrame == cellFrame && _cellFrame) {
-        return ;
+        return;
     }
     _cellFrame = cellFrame;
     
@@ -97,7 +97,7 @@
         group = searchCellFrame.group;
     }
     
-    if (group == nil) return ;
+    if (group == nil) return;
     
     [self removeAllImages];
     
@@ -112,7 +112,7 @@
         
         self.lookEssBtn.frame = cellFrame.lookEssEnceF;
         self.bottomView.frame = cellFrame.bottomViewF;
-        return ;
+        return;
     }
     
     // 头像

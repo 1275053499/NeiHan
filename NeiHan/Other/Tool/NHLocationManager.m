@@ -34,7 +34,7 @@ static NHLocationManager *_singleton = nil;
 - (void)startSerialLocation {
     
     if (self.canLocationFlag == NO) {
-        return ;
+        return;
     }
     [self.locationManager startUpdatingLocation];
 }

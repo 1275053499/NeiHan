@@ -86,7 +86,7 @@
                 loadMoreCallBack:(XRRefreshAndLoadMoreHandle)loadMoreCallBackBlock {
     
     if (scrollView == nil || loadMoreCallBackBlock == nil) {
-        return ;
+        return;
     }
     NHRefreshFooter *footer = [NHRefreshFooter footerWithRefreshingBlock:^{
         if (loadMoreCallBackBlock) {
@@ -110,7 +110,7 @@
                 pullRefreshCallBack:(XRRefreshAndLoadMoreHandle)pullRefreshCallBackBlock {
     __weak typeof(UIScrollView *)weakScrollView = scrollView;
     if (scrollView == nil || pullRefreshCallBackBlock == nil) {
-        return ;
+        return;
     }
     MJRefreshNormalHeader *header = [MJRefreshNormalHeader headerWithRefreshingBlock:^{
         if (pullRefreshCallBackBlock) {

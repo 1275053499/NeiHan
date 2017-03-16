@@ -351,7 +351,7 @@
         NHNeiHanUserInfoModel *userInfo = self.dataArray[indexPath.row];
         NHPersonalCenterViewController *controller = [[NHPersonalCenterViewController alloc] initWithUserInfoModel:userInfo];
         [self pushVc:controller];
-        return ;
+        return;
     }
     NSInteger section = indexPath.section;
     if (section == 0) {
@@ -464,7 +464,7 @@
 
 - (void)requestActionWithActionname:(NSString *)actionname indexPath:(NSIndexPath *)indexPath {
     if (indexPath.section < 2) {
-        return ;
+        return;
     }
     NHDiscoverSearchCommonCellFrame *cellFrame = nil;
     NSInteger section = indexPath.section;
@@ -484,12 +484,12 @@
             // 指针不变，只需要更换值
             NHHomeTableViewCell *cell = [self.tableView cellForRowAtIndexPath:indexPath];
             if ([actionname isEqualToString:@"digg"]) {
-                if (cellFrame.group.user_digg) return ;
+                if (cellFrame.group.user_digg) return;
                 cellFrame.group.user_digg = 1;
                 cellFrame.group.digg_count += 1;
                 [cell didDigg];
             } else if ([actionname isEqualToString:@"bury"]) {
-                if (cellFrame.group.user_bury) return ;
+                if (cellFrame.group.user_bury) return;
                 cellFrame.group.user_bury = 1;
                 cellFrame.group.bury_count += 1;
                 [cell didBury];

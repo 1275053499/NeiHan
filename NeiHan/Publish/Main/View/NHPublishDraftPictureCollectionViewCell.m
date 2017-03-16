@@ -64,7 +64,7 @@
         bg.clipsToBounds = YES;
         WeakSelf(weakSelf);
         [bg setTapActionWithBlock:^{
-            if (weakSelf.closeBtn.hidden == NO) return ;
+            if (weakSelf.closeBtn.hidden == NO) return;
             if (weakSelf.publishDraftPictureCellAddImgHandle) {
                 weakSelf.publishDraftPictureCellAddImgHandle(weakSelf);
             }

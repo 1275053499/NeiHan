@@ -391,7 +391,7 @@
     // 指针不变，只需要更换值
     if ([actionname isEqualToString:@"digg"]) {
         if (self.cellFrame.model.group.user_digg) {
-            return ;
+            return;
         }
         self.cellFrame.model.group.user_digg = 1;
         self.cellFrame.model.group.digg_count += 1;
@@ -399,7 +399,7 @@
         
     } else if ([actionname isEqualToString:@"bury"]) {
         if (self.cellFrame.model.group.user_bury) {
-            return ;
+            return;
         }
         self.cellFrame.model.group.user_bury = 1;
         self.cellFrame.model.group.bury_count += 1;
